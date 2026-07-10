@@ -1,184 +1,78 @@
+import { useState } from "react";
 import Navbar from "./Navbar";
 
 const ViewStudents = () => {
+  const [data, changeData] = useState([
+    {
+      name: "Athul",
+      avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNgnCE6jDDvPKsUkrDxcqXKpm7hJT17rm7bEd25QnlOg&s",
+      admno: "ADM1001",
+      class: "Grade 8",
+    },
+    {
+      name: "Mahi",
+      avatar: "data:image/jpeg;base64,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",
+      admno: "ADM1002",
+      class: "Grade 7",
+    },
+    {
+      name: "Gouthm",
+      avatar: "data:image/jpeg;base64,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",
+      admno: "ADM1003",
+      class: "Grade 7",
+    },
+    {
+      name: "Unni",
+      avatar: "data:image/jpeg;base64,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",
+      admno: "ADM1004",
+      class: "Grade 8",
+    },
+    {
+      name: "Steph",
+      avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZFutcVD1y3r8oyib405OisAEFWrUg8V4jLXEQbaIcw&s=10",
+      admno: "ADM1005",
+      class: "Grade 8",
+    },
+  ]);
+
   return (
     <div>
-        <Navbar/>
+      <Navbar />
       <div className="container mt-3">
         <div className="row">
           <div className="col-12">
             <div className="row g-3">
 
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Arjun+Kumar"
-                    alt="Arjun Kumar"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Arjun Kumar</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1001</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 10</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
 
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Ananya+Nair"
-                    alt="Ananya Nair"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Ananya Nair</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1002</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 9</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Rahul+Menon"
-                    alt="Rahul Menon"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Rahul Menon</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1003</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 8</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Sneha+Joseph"
-                    alt="Sneha Joseph"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Sneha Joseph</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1004</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 10</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Aditya+Raj"
-                    alt="Aditya Raj"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Aditya Raj</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1005</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 7</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Meera+Das"
-                    alt="Meera Das"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Meera Das</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1006</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 9</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Vishnu+S"
-                    alt="Vishnu S"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Vishnu S</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1007</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 6</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Aisha+Khan"
-                    alt="Aisha Khan"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Aisha Khan</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1008</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 8</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Nikhil+Babu"
-                    alt="Nikhil Babu"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Nikhil Babu</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1009</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 10</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-sm-6 col-md-3">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src="https://api.dicebear.com/9.x/lorelei/svg?seed=Diya+Paul"
-                    alt="Diya Paul"
-                    className="card-img-top bg-light"
-                    style={{ height: "220px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Diya Paul</h5>
-                    <p className="card-text mb-1"><strong>Admission No:</strong> ADM1010</p>
-                    <p className="card-text"><strong>Class:</strong> Grade 7</p>
-                    <button className="btn btn-primary w-100">View Details</button>
-                  </div>
-                </div>
-              </div>
-
+              {/* loop */}
+              {data.map(
+                (value, index) => {
+                  return (
+                    <div className="col-12 col-sm-6 col-md-3">
+                      <div className="card h-100 shadow-sm">
+                        <img
+                          src={value.avatar}
+                          alt="Arjun Kumar"
+                          className="card-img-top bg-light"
+                          style={{ height: "220px", objectFit: "cover" }}
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{value.name}</h5>
+                          <p className="card-text mb-1">
+                            <strong>Admission No:</strong> {value.admno}
+                          </p>
+                          <p className="card-text">
+                            <strong>Class:</strong> {value.class}
+                          </p>
+                          <button className="btn btn-primary w-100">
+                            View Details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+              )}
             </div>
           </div>
         </div>
