@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   return (
@@ -7,16 +8,16 @@ const Navbar = () => {
                 <div className="col-12">
                     <nav className="navbar navbar-expand-lg bg-body-tertiary ">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">Student App</a>
+                            <Link className="navbar-brand" to="#">Student App</Link>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                             <div className="navbar-nav gap-5">
-                                <a className="nav-link" href="/">Add Student</a>
-                                <a className="nav-link" href="/search">Search Student</a>
-                                <a className="nav-link" href="/delete">Delete Student</a>
-                                <a className="nav-link" href="/view">View Student</a>
+                                <Link className="nav-link" to="/">Add Student</Link>
+                                <Link className="nav-link" to="/search">Search Student</Link>
+                                <Link className="nav-link" to="/delete">Delete Student</Link>
+                                <Link className="nav-link" to="/view">View Student</Link>
                             </div>
                             </div>
                         </div>
